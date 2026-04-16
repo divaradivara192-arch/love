@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koleksi Privat ❤️</title>
+
+    <link rel="stylesheet" href="https://rerofya.github.io/resources/flower.css">
+
+    <style>
+        /* Font & Global */
+        @font-face {
+            font-family: 'Pateglamt';
+            src: url('Pateglamt Script demo version.otf') format('opentype');
+        }
+
+        body {
+            margin: 0;
+            background-color: #000;
+            font-family: 'Pateglamt', cursive, sans-serif;
+            overflow-x: hidden;
+            color: white;
+        }
+
+        /* --- STYLING LOGIN --- */
+        #login-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease;
+        }
+
+        .title-main {
+            font-size: 45px;
+            text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff1e4d;
+            margin-bottom: 10px;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+            width: 85%;
+            max-width: 320px;
+            text-align: center;
+        }
+
+        .text {
+            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            background: #ff4d6d;
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 0 15px #ff4d6d;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff1e4d;
+            transform: scale(1.05);
+        }
+
+        /* --- STYLING GALERI (HIDDEN BY DEFAULT) --- */
+        #main-content {
+            display: none; /* Disembunyikan sebelum login */
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .heartCanvas {
+            position: fixed;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        #heartLeft { left: 0; }
+        #heartRight { right: 0; }
+
+        #typingText {
+            text-align: center;
+            font-size: 30px;
+            margin-top: 40px;
+            text-shadow: 0 0 10px #ff4d66;
+        }
+
+        .gallery {
+            column-count: 2;
+            column-gap: 15px;
+            padding: 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .gallery img {
+            width: 100%;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 77, 166, 0.4);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            animation: float 4s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Popup */
+        #popup {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        #popup img { max-width: 90%; max-height: 85%; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="flower-container"></div>
+
+<div id="login-page">
+    <div class="title-main">Selamat Datang</div>
+    <div class="box">
+        <div class="text">
+            Masukkan password untuk masuk ke koleksi foto privat dari <b>Khar 02</b> 💖
+        </div>
+        <input type="password" id="pw" placeholder="Password...">
+        <br>
+        <button onclick="cek()">Buka Koleksi 💕</button>
+    </div>
+</div>
+
+<div id="main-content">
+    <canvas id="heartLeft" class="heartCanvas"></canvas>
+    <canvas id="heartRight" class="heartCanvas"></canvas>
+
+    <h1 id="typingText">I Love You 💗</h1>
+
+    <div class="gallery">
+        <img src="https://i.ibb.co/ccC3L2yY/image.jpg">
+        <img src="https://i.ibb.co/20dNzcPf/image.jpg">
+        <img src="https://i.ibb.co/7DcLZFb/image.jpg">
+        <img src="https://i.ibb.co/kgcWYxgt/image.jpg">
+        <img src="https://i.ibb.co/LXxzNqG9/image.jpg">
+        <img src="https://i.ibb.co/F4GJWNfX/image.jpg">
+        <img src="https://i.ibb.co/5XDKkn5X/image.jpg">
+        <img src="https://i.ibb.co/KjBDT2sf/image.jpg">
+        <img src="https://i.ibb.co/rGHvYLRm/image.jpg">
+        <img src="https://i.ibb.co/cK4vxwxV/image.jpg">
+        <img src="https://i.ibb.co/Q734GrBz/image.jpg">
+        <img src="https://i.ibb.co/zHZ8kDSM/image.jpg">
+        <img src="https://i.ibb.co/GQ9TNzFv/image.jpg">
+        <img src="https://i.ibb.co/GvjMx1Pz/image.jpg">
+        <img src="https://i.ibb.co/p6SjPgYx/image.jpg">
+        <img src="https://i.ibb.co/k6HGwyys/image.jpg">
+        <img src="https://i.ibb.co/NgRQ12kw/image.jpg">
+        <img src="https://i.ibb.co/mVcWcSTv/image.jpg">
+        <img src="https://i.ibb.co/jP9M6zCT/image.jpg">
+        <img src="https://i.ibb.co/nMp46ss6/image.jpg">
+        <img src="https://i.ibb.co/Qjk695cp/image.jpg">
+        <img src="https://i.ibb.co/SwsGssgN/image.jpg">
+        <img src="https://i.ibb.co/7JqzPT9d/image.jpg">
+        <img src="https://i.ibb.co/pBK6y9wy/image.jpg">
+        <img src="https://i.ibb.co/ynZR1f0w/image.jpg">
+        <img src="https://i.ibb.co/M5yYcDQK/image.jpg">
+        <img src="https://i.ibb.co/QF00BKk5/image.jpg">
+        <img src="https://i.ibb.co/Mym549sv/image.jpg">
+        <img src="https://i.ibb.co/VY26wGDB/image.jpg">
+        <img src="https://i.ibb.co/0RHFvpnC/image.jpg">
+        <img src="https://i.ibb.co/mMDNVTf/image.jpg">
+        <img src="https://i.ibb.co/DPMf7d8f/image.jpg">
+        <img src="https://i.ibb.co/20C2MM3H/image.jpg">
+        <img src="https://i.ibb.co/Kp7JTdZV/image.jpg">
+        <img src="https://i.ibb.co/sdrvL5dR/image.jpg">
+        <img src="https://i.ibb.co/Qjv4X6QJ/image.jpg">
+        <img src="https://i.ibb.co/jv1Q4fZ1/image.jpg">
+        <img src="https://i.ibb.co/SD4qYjBy/image.jpg">
+        <img src="https://i.ibb.co/bjpyTpb1/image.jpg">
+    </div>
+</div>
+
+<div id="popup">
+    <img id="popupImg">
+</div>
+
+<script src="https://rerofya.github.io/resources/flower.js"></script>
+
+<script>
+// --- FUNGSI LOGIN ---
+function cek() {
+    var password = document.getElementById("pw").value.trim().toLowerCase();
+
+    if(password === "harun02") {
+        // Animasi transisi
+        document.getElementById("login-page").style.opacity = "0";
+        
+        setTimeout(() => {
+            document.getElementById("login-page").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+            
+            // Trigger Fade In Galeri
+            setTimeout(() => {
+                document.getElementById("main-content").style.opacity = "1";
+                // Jalankan animasi hati setelah muncul
+                runAdvancedHeart("heartLeft");
+                runAdvancedHeart("heartRight");
+            }, 50);
+            
+            alert("Berhasil masuk 💖");
+        }, 800);
+
+    } else {
+        alert("Password salah 😢");
+    }
+}
+
+// --- FUNGSI POPUP ---
+const images = document.querySelectorAll(".gallery img");
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popupImg");
+
+images.forEach(img => {
+    img.onclick = () => {
+        popup.style.display = "flex";
+        popupImg.src = img.src;
+    };
+});
+popup.onclick = () => popup.style.display = "none";
+
+// --- ANIMASI HATI (CANVAS) ---
+function runAdvancedHeart(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    var ctx = canvas.getContext("2d");
+    var width = canvas.width = 300;
+    var height = canvas.height = 300;
+    var rand = Math.random;
+
+    var heartPosition = function (rad) {
+        return [
+            Math.pow(Math.sin(rad), 3),
+            -(15 * Math.cos(rad) - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad)),
+        ];
+    };
+
+    var scaleAndTranslate = function (pos, sx, sy, dx, dy) {
+        return [dx + pos[0] * sx, dy + pos[1] * sy];
+    };
+
+    var pointsOrigin = [];
+    var dr = 0.1;
+    for (var i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5.5, 0, 0)); 
+    for (var i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 70, 4.5, 0, 0)); 
+
+    var targetPoints = [];
+    var pulse = function (kx, ky) {
+        for (var i = 0; i < pointsOrigin.length; i++) {
+            targetPoints[i] = [kx * pointsOrigin[i][0] + width / 2, ky * pointsOrigin[i][1] + height / 2.2];
+        }
+    };
+
+    var e = [];
+    for (var i = 0; i < pointsOrigin.length; i++) {
+        e[i] = {
+            vx: 0, vy: 0, R: 2, speed: rand() + 5,
+            q: ~~(rand() * pointsOrigin.length),
+            D: 2 * (i % 2) - 1,
+            force: 0.2 * rand() + 0.7,
+            f: "rgba(255, 77, 166, 0.8)",
+            trace: Array.from({ length: 20 }, () => ({ x: rand()*width, y: rand()*height })),
+        };
+    }
+
+    var time = 0;
+    var loop = function () {
+        var n = -Math.cos(time);
+        pulse((1 + n) * 0.5, (1 + n) * 0.5);
+        time += (Math.sin(time) < 0 ? 9 : n > 0.8 ? 0.2 : 1) * 0.6;
+        ctx.clearRect(0, 0, width, height);
+
+        for (var i = e.length; i--; ) {
+            var u = e[i];
+            var q = targetPoints[u.q];
+            var dx = u.trace[0].x - q[0];
+            var dy = u.trace[0].y - q[1];
+            var length = Math.sqrt(dx * dx + dy * dy);
+
+            if (length < 10) {
+                if (rand() > 0.95) u.q = ~~(rand() * pointsOrigin.length);
+                else {
+                    if (rand() > 0.99) u.D *= -1;
+                    u.q = (u.q + u.D) % pointsOrigin.length;
+                    if (u.q < 0) u.q += pointsOrigin.length;
+                }
+            }
+
+            u.vx += (-dx / length) * u.speed;
+            u.vy += (-dy / length) * u.speed;
+            u.trace[0].x += u.vx;
+            u.trace[0].y += u.vy;
+            u.vx *= u.force; u.vy *= u.force;
+
+            for (var k = 0; k < u.trace.length - 1; k++) {
+                u.trace[k+1].x -= 0.4 * (u.trace[k+1].x - u.trace[k].x);
+                u.trace[k+1].y -= 0.4 * (u.trace[k+1].y - u.trace[k].y);
+            }
+            ctx.fillStyle = u.f;
+            u.trace.forEach((t) => ctx.fillRect(t.x, t.y, 2, 2));
+        }
+        window.requestAnimationFrame(loop);
+    };
+    loop();
+}
+</script>
+</body>
+</html>
